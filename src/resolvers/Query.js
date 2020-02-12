@@ -1,8 +1,8 @@
-function feed(root, args, context) {
+function feed(parent, args, context) {
   return context.prisma.links();
 }
 
-function link(root, args, context) {
+function link(parent, args, context) {
   return context.prisma.link({ id: args.id });
 }
 
