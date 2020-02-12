@@ -19,13 +19,30 @@ const resolvers = {
   Mutation: {
     post: (parent, args) => {
       const link = {
-        id: `link-${links.length++}`,
+        id: `link-${links.length}`,
         description: args.description,
         url: args.url,
       };
       links.push(link);
 
       return link;
+    },
+    updateLink: (parent, args) => {
+      const { id, description, url } = args;
+      const index = links.findIndex(link => link.id === id);
+      if (index < 0) {
+        return;
+      }
+
+      const original = links[index];
+      const updated = {
+        ...original,
+        ...(description && { description }),
+        ...(url && { url }),
+      };
+      links[index] = updated;
+
+      return updated;
     },
   },
 };
