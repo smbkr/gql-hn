@@ -1,0 +1,6 @@
+#endpoint: ''
+endpoint: https://eu1.prisma.sh/stuart-baker-6a161c/gql-hn/dev
+datamodel: datamodel.prisma
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
