@@ -44,6 +44,14 @@ const resolvers = {
 
       return updated;
     },
+    deleteLink: (parent, args) => {
+      const index = links.findIndex(link => link.id === args.id);
+      if (index < 0) {
+        return false;
+      }
+      links.splice(index, 1);
+      return true;
+    },
   },
 };
 
