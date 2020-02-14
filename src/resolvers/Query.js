@@ -1,5 +1,5 @@
 function feed(parent, args, context) {
-  const { skip, first } = args;
+  const { skip, first, orderBy } = args;
   const where = args.filter
     ? {
         OR: [
@@ -12,6 +12,7 @@ function feed(parent, args, context) {
     where,
     skip,
     first,
+    orderBy,
   });
 }
 
