@@ -1,5 +1,5 @@
-const Query = require('./query');
-const Mutation = require('./mutation');
+const Query = require('./Query');
+const Mutation = require('./Mutation');
 const Subscription = require('./Subscription');
 const User = require('./User');
 const Link = require('./Link');
