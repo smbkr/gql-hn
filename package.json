@@ -1,0 +1,17 @@
+{
+  "name": "gql-hn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:smbkr/gql-hn.git",
+  "author": "Stuart Baker <stuart.baker1@sainsburys.co.uk>",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "prettier": "^1.19.1"
+  },
+  "scripts": {
+    "server": "cd server && yarn start",
+    "client": "cd client && yarn start",
+    "start": "concurrently 'yarn server' 'yarn client'"
+  }
+}
