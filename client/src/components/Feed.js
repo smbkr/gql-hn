@@ -31,7 +31,7 @@ const Feed = () => {
 
 const query = gql`
   query {
-    feed {
+    feed(orderBy: createdAt_DESC) {
       count
       links {
         id
