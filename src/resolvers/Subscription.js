@@ -1,13 +1,10 @@
-function linkCreatedSubscriber(parent, args, context) {
-  return context.prisma.$subscribe
-    .link({
-      mutation_in: ['CREATED'],
-    })
-    .node();
-}
-
 const linkCreated = {
-  subscribe: linkCreatedSubscriber,
+  subscribe: (parent, args, context) =>
+    context.prisma.$subscribe
+      .link({
+        mutation_in: ['CREATED'],
+      })
+      .node(),
   resolve: payload => payload,
 };
 
