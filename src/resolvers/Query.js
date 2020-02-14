@@ -1,4 +1,4 @@
-function feed(parent, args, context) {
+async function feed(parent, args, context) {
   const { skip, first, orderBy } = args;
   const where = args.filter
     ? {
@@ -8,12 +8,21 @@ function feed(parent, args, context) {
         ],
       }
     : {};
-  return context.prisma.links({
-    where,
-    skip,
-    first,
-    orderBy,
-  });
+
+  const [links, count] = await Promise.all([
+    context.prisma.links({
+      where,
+      skip,
+      first,
+      orderBy,
+    }),
+    context.prisma
+      .linksConnection({ where })
+      .aggregate()
+      .count(),
+  ]);
+
+  return { links, count };
 }
 
 function link(parent, args, context) {
