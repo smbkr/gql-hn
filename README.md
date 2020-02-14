@@ -12,5 +12,6 @@ This is a GraphQL powered API for a link aggregator (think Hacker News, Reddit),
 - Require auth for update & delete
 - Add upvote count to Link items
 - Add client (WIP)
+  - Pull Tachyons in from npm rather than from a CDN on each page load
 - Use a Docker container for the DB for local development
 - Add tests
