@@ -1,4 +1,4 @@
-function linkSubmittedSubscriber(parent, args, context) {
+function linkCreatedSubscriber(parent, args, context) {
   return context.prisma.$subscribe
     .link({
       mutation_in: ['CREATED'],
@@ -6,11 +6,11 @@ function linkSubmittedSubscriber(parent, args, context) {
     .node();
 }
 
-const linkSubmitted = {
-  subscribe: linkSubmittedSubscriber,
+const linkCreated = {
+  subscribe: linkCreatedSubscriber,
   resolve: payload => payload,
 };
 
 module.exports = {
-  linkSubmitted,
+  linkCreated,
 };
