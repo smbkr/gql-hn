@@ -9,12 +9,17 @@ const Link = ({ link }) => {
   const hostname = new URL(link.url).host;
 
   return (
-    <div>
-      <div>
-        <a href={link.url}>{link.description}</a> ({hostname})
+    <div className="mb2">
+      <div className="mb1">
+        <h2 className="f5 mb1">
+          <a href={link.url} className="black">
+            {link.description}
+          </a>{' '}
+          <span className="fw1 gray">({hostname})</span>
+        </h2>
       </div>
-      <div>
-        Posted by {postedBy} at {dayjs(link.createdAt).fromNow()}
+      <div className="f6">
+        Posted by {postedBy} {dayjs(link.createdAt).fromNow()}
       </div>
     </div>
   );

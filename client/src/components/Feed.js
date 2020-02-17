@@ -24,7 +24,7 @@ const Feed = () => {
           <Link key={link.id} link={link} />
         ))}
       </div>
-      There are {count} links
+      <div className="mb2">There are {count} links</div>
     </div>
   );
 };

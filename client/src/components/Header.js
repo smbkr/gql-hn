@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Header = () => {
   return (
     <div className="flex pa1 justify-between nowrap bg-green">
-      <div className="flex flex-fixed black">
-        <div className="fw7 mr1">Crapper News</div>
+      <div className="flex flex-fixed items-center">
+        <h1 className="f5 ml1 mr1">Crapper News</h1>
         {/*TODO: use styled-components here*/}
         <Link to="/" className="ml1 no-underline black">
           Feed
