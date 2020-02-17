@@ -10,8 +10,14 @@ const Header = ({ history }) => {
       <div className="flex flex-fixed items-center">
         <h1 className="f5 ml2 mr1">Crapper News</h1>
         <Item to="/" label="Feed" />
-        <Separator />
-        <Item to="/submit" label="Submit" />
+        {isLoggedIn ? (
+          <>
+            <Separator />
+            <Item to="/submit" label="Submit" />
+          </>
+        ) : (
+          ''
+        )}
       </div>
       <div className="flex flex-fixed items-center mr2">
         {isLoggedIn ? (
