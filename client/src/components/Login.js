@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Login = props => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,7 +22,6 @@ const Login = props => {
           onChange={e => setPassword(e.target.value)}
         />
       </div>
-
       <div className="flex mt3 mb3">
         <button
           type="submit"
