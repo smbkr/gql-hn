@@ -2,15 +2,16 @@ import React, { useCallback, useState } from 'react';
 import { useMutation } from 'urql';
 import gql from 'graphql-tag';
 
-const CreateLink = () => {
+const CreateLink = ({ history }) => {
   const [description, setDescription] = useState('');
   const [url, setUrl] = useState('');
 
   const [state, executeMutation] = useMutation(query);
 
-  const submit = useCallback(() => {
-    executeMutation({ url, description });
-  }, [executeMutation, url, description]);
+  const submit = useCallback(async () => {
+    await executeMutation({ url, description });
+    history.push('/');
+  }, [executeMutation, url, description, history]);
 
   return (
     <div>
