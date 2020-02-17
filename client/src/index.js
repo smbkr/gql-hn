@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Client, Provider, dedupExchange, fetchExchange } from 'urql';
+import { BrowserRouter } from 'react-router-dom';
+import { Client, dedupExchange, fetchExchange, Provider } from 'urql';
 import { cacheExchange } from '@urql/exchange-graphcache';
 import './styles/index.css';
-import App from './components/App';
 import * as serviceWorker from './serviceWorker';
+import App from './components/App';
 
 const cache = cacheExchange({
   keys: {
@@ -17,9 +18,11 @@ const client = new Client({
 });
 
 ReactDOM.render(
-  <Provider value={client}>
-    <App />
-  </Provider>,
+  <BrowserRouter>
+    <Provider value={client}>
+      <App />
+    </Provider>
+  </BrowserRouter>,
   document.getElementById('root'),
 );
 
