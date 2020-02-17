@@ -15,25 +15,32 @@ const CreateLink = ({ history }) => {
 
   return (
     <div>
-      <div className="flex flex-column mt3">
+      <h2 className="mv3">Submit Link</h2>
+      <div className="flex flex-column">
         <input
           type="text"
-          className="mb2"
+          className="input-reset b ba bg-white w-100 mb2 pa2"
           value={description}
           onChange={e => setDescription(e.target.value)}
           placeholder="A description for the link"
         />
         <input
           type="text"
-          className="mb2"
+          className="input-reset b ba bg-white w-100 mb2 pa2"
           value={url}
           onChange={e => setUrl(e.target.value)}
           placeholder="The URL you wish to link to"
         />
       </div>
-      <button onClick={submit} disabled={state.fetching}>
-        Submit Link
-      </button>
+      <div className="flex mb3 mt3">
+        <button
+          onClick={submit}
+          disabled={state.fetching}
+          className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib"
+        >
+          Submit Link
+        </button>
+      </div>
     </div>
   );
 };
