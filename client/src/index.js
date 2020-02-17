@@ -6,15 +6,23 @@ import { cacheExchange } from '@urql/exchange-graphcache';
 import './styles/index.css';
 import * as serviceWorker from './serviceWorker';
 import App from './components/App';
+import { getToken } from './token';
 
 const cache = cacheExchange({
   keys: {
-    Feed: _ => `feed`, // TODO: Should cache by pagination params?
+    Feed: _ => `feed`,
   },
 });
 const client = new Client({
   url: 'http://localhost:4000',
   exchanges: [dedupExchange, cache, fetchExchange],
+  fetchOptions: () => {
+    const token = getToken();
+
+    return {
+      headers: { Authorization: token ? `Bearer ${token}` : '' },
+    };
+  },
 });
 
 ReactDOM.render(
