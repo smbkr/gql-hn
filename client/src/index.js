@@ -6,7 +6,11 @@ import './styles/index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-const cache = cacheExchange({});
+const cache = cacheExchange({
+  keys: {
+    Feed: _ => `feed`, // TODO: Should cache by pagination params?
+  },
+});
 const client = new Client({
   url: 'http://localhost:4000',
   exchanges: [dedupExchange, cache, fetchExchange],
