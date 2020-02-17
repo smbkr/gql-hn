@@ -8,15 +8,15 @@ const Header = ({ history }) => {
   return (
     <div className="flex pa1 justify-between nowrap bg-green">
       <div className="flex flex-fixed items-center">
-        <h1 className="f5 ml1 mr1">Crapper News</h1>
+        <h1 className="f5 ml2 mr1">Crapper News</h1>
         <Item to="/" label="Feed" />
         <Separator />
         <Item to="/submit" label="Submit" />
       </div>
-      <div className="flex flex-fixed items-center mr1">
+      <div className="flex flex-fixed items-center mr2">
         {isLoggedIn ? (
           <span
-            className={itemClassNames}
+            className={`${itemClassNames} pointer`}
             onClick={() => {
               deleteToken();
               history.push('/');

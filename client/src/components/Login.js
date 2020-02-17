@@ -1,8 +1,20 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useMutation } from 'urql';
+import gql from 'graphql-tag';
+import { setToken } from '../token';
 
-const Login = () => {
+const Login = ({ history }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [state, executeMutation] = useMutation(query);
+
+  const handleSubmit = useCallback(async () => {
+    const data = await executeMutation({ email, password });
+    const { token } = data;
+    setToken(token);
+    history.push('/');
+  }, [executeMutation, history, email, password]);
 
   return (
     <div>
@@ -25,6 +37,8 @@ const Login = () => {
       <div className="flex mt3 mb3">
         <button
           type="submit"
+          disabled={state.fetching}
+          onClick={handleSubmit}
           className="b ph3 pv2 input-reset ba b--black bg-transparent pointer f5 dib"
         >
           Log In
@@ -33,5 +47,13 @@ const Login = () => {
     </div>
   );
 };
+
+const query = gql`
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      token
+    }
+  }
+`;
 
 export default Login;
