@@ -19,11 +19,13 @@ const Feed = () => {
 
   return (
     <div>
-      <div>
+      <ol>
         {links.map(link => (
-          <Link key={link.id} link={link} />
+          <li key={link.id}>
+            <Link link={link} />
+          </li>
         ))}
-      </div>
+      </ol>
       <div className="mb2">There are {count} links</div>
     </div>
   );
@@ -38,6 +40,9 @@ const query = gql`
         createdAt
         url
         description
+        votes {
+          id
+        }
         postedBy {
           id
           name

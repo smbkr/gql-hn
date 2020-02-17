@@ -13,8 +13,8 @@ const Login = ({ history }) => {
     async e => {
       e.preventDefault();
       const data = await executeMutation({ email, password });
-      const { token } = data;
-      if (token) {
+      const token = data.data.login.token;
+      if (!!token) {
         setToken(token);
         history.push('/');
       }
