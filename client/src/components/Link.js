@@ -17,8 +17,8 @@ const Link = ({ link }) => {
 
   const upvote = useCallback(() => {
     if (!state.fetching) {
+      executeMutation({ linkId: link.id });
     }
-    executeMutation({ linkId: link.id });
   }, [state.fetching, executeMutation, link.id]);
 
   return (
